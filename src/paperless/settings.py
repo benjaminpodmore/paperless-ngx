@@ -279,6 +279,7 @@ INSTALLED_APPS = [
     "paperless",
     "documents.apps.DocumentsConfig",
     "paperless_tesseract.apps.PaperlessTesseractConfig",
+    "paperless_textract.apps.PaperlessTextractConfig",
     "paperless_text.apps.PaperlessTextConfig",
     "paperless_mail.apps.PaperlessMailConfig",
     "django.contrib.admin",
