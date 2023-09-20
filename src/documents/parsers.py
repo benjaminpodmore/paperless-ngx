@@ -18,6 +18,7 @@ from django.utils import timezone
 from documents.loggers import LoggingMixin
 from documents.signals import document_consumer_declaration
 from documents.utils import copy_file_with_basic_stats
+from paperless_textract.signals import textract_consumer_declaration
 
 # This regular expression will try to find dates in the document at
 # hand and will match the following formats:
@@ -115,7 +116,10 @@ def get_parser_class_for_mime_type(mime_type: str) -> Optional["DocumentParser"]
 
     # Sein letzter Befehl war: KOMMT! Und sie kamen. Alle. Sogar die Parser.
 
+    return textract_consumer_declaration(None)["parser"]
+
     for response in document_consumer_declaration.send(None):
+        print(response)
         parser_declaration = response[1]
         supported_mime_types = parser_declaration["mime_types"]
 
